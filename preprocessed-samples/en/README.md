@@ -19,8 +19,6 @@ most frequent words:
 • in: 3
 ```
 
----
-
 **potter.txt**
 
 ```
@@ -41,8 +39,6 @@ most frequent words:
 • it: 1185
 • you: 1035
 ```
-
----
 
 **shakespeare.txt**
 
