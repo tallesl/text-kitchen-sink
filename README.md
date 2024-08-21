@@ -23,15 +23,36 @@ $ sudo apt install calibre
 $ for f in *.prc; do echo "Processing $f"; ebook-convert "$f" "${f%.prc}.txt"; done
 ```
 
-## concatenating all .txt
+## .txt concatenation
 
 ```
 $ cat *.txt > all.txt
 ```
 
-## pre-processing .txt
+## .txt pre-processing
 
 ```
 $ chmod +x no-extra-spaces.py en-only.py # or pt-only.py
 $ cat all.txt | ./en-only.py | ./no-extra-spaces.py > preprocessed.txt
+``` 
+
+## .txt statistics
+
+``` 
+characters: 741
+lines: 4
+words: 140
+unique words: 84
+
+most frequent words:
+• is: 8
+• the: 8
+• and: 6
+• it: 6
+• its: 5
+• charmander: 4
+• a: 4
+• pokemon: 4
+• when: 4
+• in: 3
 ``` 
