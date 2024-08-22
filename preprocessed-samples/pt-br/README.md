@@ -19,6 +19,27 @@ most frequent words:
 • quando: 4
 ```
 
+**harry.txt**
+
+```
+characters: 965333
+lines: 13284
+words: 166096
+unique words: 12751
+
+most frequent words:
+• de: 5763
+• que: 5186
+• a: 4996
+• o: 4651
+• e: 4559
+• harry: 2886
+• se: 2549
+• não: 2486
+• para: 2326
+• um: 2221
+```
+
 **tronos.txt**
 
 ```
