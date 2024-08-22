@@ -40,6 +40,27 @@ most frequent words:
 • um: 2221
 ```
 
+**principe.txt**
+
+```
+characters: 74840
+lines: 1794
+words: 12947
+unique words: 2601
+
+most frequent words:
+• o: 510
+• de: 381
+• que: 363
+• a: 333
+• e: 319
+• não: 287
+• um: 237
+• eu: 218
+• é: 209
+• se: 201
+```
+
 **tronos.txt**
 
 ```

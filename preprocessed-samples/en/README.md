@@ -19,7 +19,7 @@ most frequent words:
 • in: 3
 ```
 
-**potter.txt**
+**harry.txt**
 
 ```
 characters: 436686
@@ -38,6 +38,27 @@ most frequent words:
 • was: 1186
 • it: 1185
 • you: 1035
+```
+
+**prince.txt**
+
+```
+characters: 90540
+lines: 1165
+words: 16898
+unique words: 2112
+
+most frequent words:
+• the: 977
+• i: 545
+• to: 470
+• a: 410
+• and: 356
+• of: 335
+• that: 321
+• you: 309
+• is: 300
+• he: 297
 ```
 
 **shakespeare.txt**
