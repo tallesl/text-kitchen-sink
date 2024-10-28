@@ -56,3 +56,17 @@ most frequent words:
 • when: 4
 • in: 3
 ``` 
+
+## directory search and flattening
+
+```
+$ chmod +x find-and-flatten.py
+$ ./find-and-flatten.py 'crawled_forum/' 'flattened_directory/' 'thread-*.html'
+```
+
+## file sampling
+
+```
+$ chmod +x find-and-flatten.py
+$ ./sample-files.py 'crawled_forum/' 'crawled_samples/' 15
+```
