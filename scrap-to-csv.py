@@ -4,7 +4,7 @@ from sys import argv
 from os import listdir
 from os.path import isfile, join, basename, dirname
 from bs4 import BeautifulSoup
-from csv import writer
+from csv import writer, QUOTE_MINIMAL
 from tqdm import tqdm
 from uuid import uuid4
 
@@ -59,7 +59,7 @@ def extract_data(html_content, css_selector, dir_name, file_name):
 
 def write_to_csv(data):
     with open('scrap.csv', 'w', newline='', encoding='utf-8') as csvfile:
-        csv_writer = writer(csvfile)
+        csv_writer = writer(csvfile, quoting=QUOTE_MINIMAL, escapechar='\\')
         # Write header
         csv_writer.writerow(['id', 'directory', 'file', 'content'])
         for row in data:
