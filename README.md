@@ -70,3 +70,13 @@ $ ./find-and-flatten.py 'crawled_forum/' 'flattened_directory/' 'thread-*.html'
 $ chmod +x find-and-flatten.py
 $ ./sample-files.py 'crawled_forum/' 'crawled_samples/' 15
 ```
+
+## scraping to .csv
+
+```
+$ chmod +x scrap_to_csv.py
+$ pip install beautifulsoup4 tdqm
+$ ./scrap-to-csv.py 'flattened_directory/' '.forum .post .post-content'
+$ head -n 1 scrap.csv
+uuid,directory,file,content
+```
