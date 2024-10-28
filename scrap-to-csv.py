@@ -2,10 +2,11 @@
 
 from sys import argv
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, basename, dirname
 from bs4 import BeautifulSoup
 from csv import writer
-from tqdm import tqdm  # Import tqdm for the progress bar
+from tqdm import tqdm
+from uuid import uuid4
 
 def parse_arguments():
     if len(argv) != 3:
@@ -25,7 +26,6 @@ def get_files_in_directory(source_directory):
 
 def process_files(files_list, css_selector):
     extracted_data = []
-    # Wrap the files_list with tqdm for the progress bar
     for file_path in tqdm(files_list, desc="Processing files"):
         # Process each file in the list
         data_from_file = process_file(file_path, css_selector)
@@ -33,27 +33,38 @@ def process_files(files_list, css_selector):
     return extracted_data
 
 def process_file(file_path, css_selector):
+    # Get directory and file name
+    dir_name = basename(dirname(file_path))
+    file_name = basename(file_path)
     with open(file_path, 'r', encoding='utf-8') as file_handle:
         file_content = file_handle.read()
-    data = extract_data(file_content, css_selector)
+    data = extract_data(file_content, css_selector, dir_name, file_name)
     return data
 
-def extract_data(html_content, css_selector):
+def extract_data(html_content, css_selector, dir_name, file_name):
     soup = BeautifulSoup(html_content, 'html.parser')
     elements = soup.select(css_selector)
     data = []
     for element in elements:
         # Extract text from each selected element
         text = element.get_text(strip=True)
-        data.append(text)
+        uid = str(uuid4())
+        data.append({
+            'id': uid,
+            'directory': dir_name,
+            'file': file_name,
+            'content': text
+        })
     return data
 
 def write_to_csv(data):
     with open('scrap.csv', 'w', newline='', encoding='utf-8') as csvfile:
         csv_writer = writer(csvfile)
+        # Write header
+        csv_writer.writerow(['id', 'directory', 'file', 'content'])
         for row in data:
             # Write each data row to the CSV file
-            csv_writer.writerow([row])
+            csv_writer.writerow([row['id'], row['directory'], row['file'], row['content']])
 
 def main():
     source_directory, css_selector = parse_arguments()
