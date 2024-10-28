@@ -36,8 +36,16 @@ def process_file(file_path, css_selector):
     # Get directory and file name
     dir_name = basename(dirname(file_path))
     file_name = basename(file_path)
-    with open(file_path, 'r', encoding='utf-8') as file_handle:
-        file_content = file_handle.read()
+
+    try:
+        # First, try to open the file with utf-8 encoding
+        with open(file_path, 'r', encoding='utf-8') as file_handle:
+            file_content = file_handle.read()
+    except UnicodeDecodeError:
+        # If utf-8 fails, try ISO-8859-1
+        with open(file_path, 'r', encoding='ISO-8859-1') as file_handle:
+            file_content = file_handle.read()
+
     data = extract_data(file_content, css_selector, dir_name, file_name)
     return data
 
@@ -47,7 +55,14 @@ def extract_data(html_content, css_selector, dir_name, file_name):
     data = []
     for element in elements:
         # Extract text from each selected element
-        text = element.get_text(strip=True)
+        elements = element.find_all(string=True, recursive=False)
+        texts = [e.strip() for e in elements if e.strip()]
+
+        if not texts:
+            continue
+
+        text = ''.join(texts)
+
         uid = str(uuid4())
         data.append({
             'id': uid,
@@ -59,7 +74,7 @@ def extract_data(html_content, css_selector, dir_name, file_name):
 
 def write_to_csv(data):
     with open('scrap.csv', 'w', newline='', encoding='utf-8') as csvfile:
-        csv_writer = writer(csvfile, quoting=QUOTE_MINIMAL, escapechar='\\')
+        csv_writer = writer(csvfile, quoting=QUOTE_MINIMAL, escapechar='\\', lineterminator='\n')
         # Write header
         csv_writer.writerow(['id', 'directory', 'file', 'content'])
         for row in data:
@@ -72,5 +87,5 @@ def main():
     extracted_data = process_files(files_list, css_selector)
     write_to_csv(extracted_data)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
