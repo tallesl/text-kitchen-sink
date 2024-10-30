@@ -57,14 +57,14 @@ most frequent words:
 • in: 3
 ``` 
 
-## Directory Search and Flattening
+## Directory search and flattening
 
 ```
 $ chmod +x find-and-flatten.py
 $ ./find-and-flatten.py 'crawled_forum/' 'flattened_directory/' 'thread-*.html'
 ```
 
-## File Sampling
+## File sampling
 
 ```
 $ chmod +x find-and-flatten.py
@@ -81,14 +81,14 @@ $ head -n 1 scrap.csv
 uuid,directory,file,content
 ```
 
-## Viewing Only the "content" Column from `.csv`
+## Viewing only the "content" column from `.csv`
 
 ```
 $ sudo apt install csvtool
 $ csvtool namedcol content scrap.csv | less
 ```
 
-## Deduping `.csv` by "content" Column
+## Deduping `.csv` by "content" column
 
 ```
 $ chmod +x dedupe-by-content.py
