@@ -84,7 +84,7 @@ uuid,directory,file,content
 ## deduping .csv by "content" column
 
 ```
-$ chmod +x dedupe.py
+$ chmod +x dedupe-by-content.py
 $ pip install pandas
-$ ./dedupe.py scrap.csv > deduped.csv
+$ ./dedupe-by-content.py scrap.csv > deduped.csv
 ```
