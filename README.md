@@ -1,42 +1,42 @@
-# Text kitchen sink
+# Text Kitchen Sink
 
 Pre-processing text for future cool stuff.
 
-## .pdf to .txt
+## `.pdf` to `.txt`
 
 ```
 $ sudo apt install poppler-utils
 $ for f in *.pdf; do echo "Processing $f"; pdftotext "$f"; done
 ```
 
-## .mobi to .txt
+## `.mobi` to `.txt`
 
 ```
 $ sudo apt install calibre
 $ for f in *.mobi; do echo "Processing $f"; ebook-convert "$f" "${f%.mobi}.txt"; done
 ```
 
-## .prc to .txt
+## `.prc` to `.txt`
 
 ```
 $ sudo apt install calibre
 $ for f in *.prc; do echo "Processing $f"; ebook-convert "$f" "${f%.prc}.txt"; done
 ```
 
-## .txt concatenation
+## `.txt` concatenation
 
 ```
 $ cat *.txt > all.txt
 ```
 
-## .txt pre-processing
+## `.txt` pre-processing
 
 ```
 $ chmod +x no-extra-spaces.py en-only.py # or pt-only.py
 $ cat all.txt | ./en-only.py | ./no-extra-spaces.py > preprocessed.txt
 ``` 
 
-## .txt statistics
+## `.txt` statistics
 
 ``` 
 characters: 741
@@ -57,21 +57,21 @@ most frequent words:
 • in: 3
 ``` 
 
-## directory search and flattening
+## Directory Search and Flattening
 
 ```
 $ chmod +x find-and-flatten.py
 $ ./find-and-flatten.py 'crawled_forum/' 'flattened_directory/' 'thread-*.html'
 ```
 
-## file sampling
+## File Sampling
 
 ```
 $ chmod +x find-and-flatten.py
 $ ./sample-files.py 'crawled_forum/' 'crawled_samples/' 15
 ```
 
-## scraping to .csv
+## Scraping to `.csv`
 
 ```
 $ chmod +x scrap_to_csv.py
@@ -81,7 +81,14 @@ $ head -n 1 scrap.csv
 uuid,directory,file,content
 ```
 
-## deduping .csv by "content" column
+## Viewing Only the "content" Column from `.csv`
+
+```
+$ sudo apt install csvtool
+$ csvtool namedcol content scrap.csv | less
+```
+
+## Deduping `.csv` by "content" Column
 
 ```
 $ chmod +x dedupe-by-content.py
