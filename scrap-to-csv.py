@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# pip install beautifulsoup4 tqdm
+
 from sys import argv
 from os import listdir
 from os.path import isfile, join, basename, dirname
