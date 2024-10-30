@@ -80,3 +80,11 @@ $ ./scrap-to-csv.py 'crawled_forum/' '.forum .post .post-content'
 $ head -n 1 scrap.csv
 uuid,directory,file,content
 ```
+
+## deduping .csv by "content" column
+
+```
+$ chmod +x dedupe.py
+$ pip install pandas
+$ ./dedupe.py scrap.csv > deduped.csv
+```
