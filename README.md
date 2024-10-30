@@ -76,7 +76,7 @@ $ ./sample-files.py 'crawled_forum/' 'crawled_samples/' 15
 ```
 $ chmod +x scrap_to_csv.py
 $ pip install beautifulsoup4 tdqm
-$ ./scrap-to-csv.py 'flattened_directory/' '.forum .post .post-content'
+$ ./scrap-to-csv.py 'crawled_forum/' '.forum .post .post-content'
 $ head -n 1 scrap.csv
 uuid,directory,file,content
 ```
