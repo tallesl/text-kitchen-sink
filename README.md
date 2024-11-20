@@ -99,11 +99,10 @@ $ ./dedupe-by-content.py scrap.csv > deduped.csv
 ## Scraping recipe
 
 1. Inspect the filepaths looking for a common pattern (`find crawled.com/ | vim -`).
-1. While in vim, first delete all lines matching your pattern (fingers crossed for clustering by sorting alphabetically
-them correctly). Use a macro and make it a removal script by prepending `rm -rf` to the files not matching the pattern,
-save it, **double check if the root folder is there**, run it.
+1. [Find the files and flat the directory](#directory-search-and-flattening).
 1. [Take some samples](#file-sampling).
 1. Inspect the HTML samples looking for what to extract, figuring it out what CSS selector will do the job.
-1. [Scrap to .csv](#scraping-to-csv).
-1. Now scrap again but this time on all the crawled pages.
+1. [Scrap the samples to .csv](#scraping-to-csv).
+1. Inspect the .csv, check if it looks correct.
+1. If yes, now scrap again but this time on all the crawled pages. If not, back to figuring it out the CSS selector.
 1. [Dedupe it](#deduping-csv-by-content-column) just in case.
