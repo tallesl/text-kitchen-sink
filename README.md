@@ -67,7 +67,7 @@ $ ./find-and-flatten.py 'crawled_forum/' 'flattened_directory/' 'thread-*.html'
 ## File sampling
 
 ```
-$ chmod +x find-and-flatten.py
+$ chmod +x sample-files.py
 $ ./sample-files.py 'crawled_forum/' 'crawled_samples/' 15
 ```
 
