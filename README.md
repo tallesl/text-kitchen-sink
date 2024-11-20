@@ -101,7 +101,7 @@ $ ./dedupe-by-content.py scrap.csv > deduped.csv
 1. Inspect the filepaths looking for a common pattern (`find crawled.com/ | vim -`).
 1. While in vim, first delete all lines matching your pattern (fingers crossed for clustering by sorting alphabetically
 them correctly). Use a macro and make it a removal script by prepending `rm -rf` to the files not matching the pattern,
-save it, run it.
+save it, **double check if the root folder is there**, run it.
 1. [Take some samples](#file-sampling).
 1. Inspect the HTML samples looking for what to extract, figuring it out what CSS selector will do the job.
 1. [Scrap to .csv](#scraping-to-csv).
