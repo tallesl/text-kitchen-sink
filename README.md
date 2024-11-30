@@ -89,6 +89,13 @@ $ pip install pandas
 $ ./count-csv.py scrap.csv
 ```
 
+## Sampling `.csv` rows
+
+```
+$ sudo apt install csvkit
+$ csvsql -z 999999999 --query "SELECT * FROM 'scrap' ORDER BY RANDOM() LIMIT 30" scrap.csv > scrap-samples.csv
+```
+
 ## Viewing only the "content" column from `.csv`
 
 ```
