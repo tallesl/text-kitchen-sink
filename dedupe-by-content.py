@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
-# pip install pandas
+from sys import argv
+from pandas import read_csv  # pip install pandas
 
-import sys
-import pandas as pd
-
-df = pd.read_csv(sys.argv[1])
-df_deduped = df.drop_duplicates(subset=df.columns[3], keep='first')
-print(df_deduped.to_csv(index=False))
+dataframe = read_csv(argv[1])
+deduped_dataframe = dataframe.drop_duplicates(subset=dataframe.columns[3], keep='first')
+print(deduped_dataframe.to_csv(index=False))

@@ -81,6 +81,14 @@ $ head -n 1 scrap.csv
 uuid,directory,file,content
 ```
 
+## Counting `.csv` rows
+
+```
+$ chmod +x count-csv.py
+$ pip install pandas
+$ ./count-csv.py scrap.csv
+```
+
 ## Viewing only the "content" column from `.csv`
 
 ```
