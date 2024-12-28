@@ -99,8 +99,8 @@ $ csvsql -z 999999999 --query "SELECT * FROM 'scrap' ORDER BY RANDOM() LIMIT 30"
 ## Viewing only the "content" column from `.csv`
 
 ```
-$ sudo apt install csvtool
-$ csvtool namedcol content scrap.csv | less
+$ sudo apt install csvkit
+$ csvcut -c 4 scrap.csv | less
 ```
 
 ## Deduping `.csv` by "content" column
