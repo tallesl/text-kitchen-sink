@@ -103,6 +103,12 @@ $ sudo apt install csvkit
 $ csvcut -c 4 scrap.csv | less
 ```
 
+## Removing first and last char of line
+
+```
+$ sed 's/^.\(.*\).$/\1/' scrap.csv | less
+```
+
 ## Deduping `.csv` by "content" column
 
 ```
