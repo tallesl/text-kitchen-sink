@@ -2,7 +2,7 @@
 
 Pre-processing text for future cool stuff.
 
-## To `.txt`
+## .xxx to .txt
 
 `.pdf` to `.txt`:
 
@@ -25,7 +25,7 @@ $ sudo apt install calibre
 $ for f in *.prc; do echo "Processing $f"; ebook-convert "$f" "${f%.prc}.txt"; done
 ```
 
-## `.txt`
+## .txt
 
 `.txt` concatenation:
 
@@ -61,7 +61,7 @@ most frequent words:
 • in: 3
 ``` 
 
-## Scraping and `.csv`
+## .html and .csv
 
 Directory search and flattening:
 
