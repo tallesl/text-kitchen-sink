@@ -37,7 +37,7 @@ $ cat *.txt > all.txt
 
 ```
 $ chmod +x no-extra-spaces.py en-only.py # or pt-only.py
-$ cat all.txt | ./en-only.py | ./no-extra-spaces.py > preprocessed.txt
+$ cat all.txt | ./en-only.py | ./no-extra-spaces.py | ./lower.py > preprocessed.txt
 ``` 
 
 `.txt` statistics:
