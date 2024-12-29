@@ -2,41 +2,45 @@
 
 Pre-processing text for future cool stuff.
 
-## `.pdf` to `.txt`
+## To `.txt`
+
+`.pdf` to `.txt`:
 
 ```
 $ sudo apt install poppler-utils
 $ for f in *.pdf; do echo "Processing $f"; pdftotext "$f"; done
 ```
 
-## `.mobi` to `.txt`
+`.mobi` to `.txt`:
 
 ```
 $ sudo apt install calibre
 $ for f in *.mobi; do echo "Processing $f"; ebook-convert "$f" "${f%.mobi}.txt"; done
 ```
 
-## `.prc` to `.txt`
+`.prc` to `.txt`:
 
 ```
 $ sudo apt install calibre
 $ for f in *.prc; do echo "Processing $f"; ebook-convert "$f" "${f%.prc}.txt"; done
 ```
 
-## `.txt` concatenation
+## `.txt`
+
+`.txt` concatenation:
 
 ```
 $ cat *.txt > all.txt
 ```
 
-## `.txt` pre-processing
+`.txt` pre-processing:
 
 ```
 $ chmod +x no-extra-spaces.py en-only.py # or pt-only.py
 $ cat all.txt | ./en-only.py | ./no-extra-spaces.py > preprocessed.txt
 ``` 
 
-## `.txt` statistics
+`.txt` statistics:
 
 ``` 
 characters: 741
@@ -57,21 +61,23 @@ most frequent words:
 • in: 3
 ``` 
 
-## Directory search and flattening
+## Scraping and `.csv`
+
+Directory search and flattening:
 
 ```
 $ chmod +x find-and-flatten.py
 $ ./find-and-flatten.py 'crawled_forum/' 'flattened_directory/' 'thread-*.html'
 ```
 
-## File sampling
+File sampling:
 
 ```
 $ chmod +x sample-files.py
 $ ./sample-files.py 'crawled_forum/' 'crawled_samples/' 15
 ```
 
-## Scraping to `.csv`
+Scraping to `.csv`:
 
 ```
 $ chmod +x scrap_to_csv.py
@@ -81,7 +87,7 @@ $ head -n 1 scrap.csv
 uuid,directory,file,content
 ```
 
-## Counting `.csv` rows
+Counting `.csv` rows:
 
 ```
 $ chmod +x count-csv.py
@@ -89,27 +95,27 @@ $ pip install pandas
 $ ./count-csv.py scrap.csv
 ```
 
-## Sampling `.csv` rows
+Sampling `.csv` rows:
 
 ```
 $ sudo apt install csvkit
 $ csvsql -z 999999999 --query "SELECT * FROM 'scrap' ORDER BY RANDOM() LIMIT 30" scrap.csv > scrap-samples.csv
 ```
 
-## Viewing only the "content" column from `.csv`
+Viewing only the "content" column from `.csv`:
 
 ```
 $ sudo apt install csvkit
 $ csvcut -c 4 scrap.csv | less
 ```
 
-## Removing first and last character of line
+Removing first and last character of line:
 
 ```
 $ sed 's/^.\(.*\).$/\1/' scrap.csv | less
 ```
 
-## Deduping `.csv` by "content" column
+Deduping `.csv` by "content" column:
 
 ```
 $ chmod +x dedupe-by-content.py
@@ -117,7 +123,7 @@ $ pip install pandas
 $ ./dedupe-by-content.py scrap.csv > deduped.csv
 ```
 
-## Scraping recipe
+Scraping recipe:
 
 1. Inspect the filepaths looking for a common pattern (`find crawled.com/ | vim -`).
 1. [Find the files and flat the directory](#directory-search-and-flattening).
