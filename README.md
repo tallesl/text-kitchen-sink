@@ -112,13 +112,13 @@ Viewing only the "content" column from `.csv`:
 
 ```
 $ sudo apt install csvkit
-$ csvcut -c 4 scrap.csv | less
+$ cat scrap.csv | csvcut -c 4 --maxfieldsize 999999 | less
 ```
 
 Removing leading and trailing quotes on each line, if present:
 
 ```
-$ sed 's/^"//;s/"$//' scrap.csv | less
+$ cat scrap.csv | sed 's/^"//;s/"$//' | less
 ```
 
 Deduping `.csv` by "content" column:
