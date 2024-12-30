@@ -27,20 +27,26 @@ $ for f in *.prc; do echo "Processing $f"; ebook-convert "$f" "${f%.prc}.txt"; d
 
 ## .txt
 
-`.txt` concatenation:
+From utf-8 to latin-1:
+
+```
+$ cat utf8.txt | iconv -c -f UTF-8 -t ISO-8859-1//IGNORE > latin1.txt
+```
+
+Concatenation:
 
 ```
 $ cat *.txt > all.txt
 ```
 
-`.txt` pre-processing:
+Pre-processing:
 
 ```
 $ chmod +x no-extra-spaces.py en-only.py # or pt-only.py
 $ cat all.txt | ./en-only.py | ./no-extra-spaces.py | ./lower.py > preprocessed.txt
 ``` 
 
-`.txt` statistics:
+Statistics:
 
 ``` 
 characters: 741
