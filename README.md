@@ -109,10 +109,10 @@ $ sudo apt install csvkit
 $ csvcut -c 4 scrap.csv | less
 ```
 
-Removing first and last character of line:
+Removing leading and trailing quotes on each line, if present:
 
 ```
-$ sed 's/^.\(.*\).$/\1/' scrap.csv | less
+$ sed 's/^"//;s/"$//' scrap.csv | less
 ```
 
 Deduping `.csv` by "content" column:
