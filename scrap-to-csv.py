@@ -77,7 +77,7 @@ def extract_data(html_content, css_selector, dir_name, file_name):
     return data
 
 def write_to_csv(data):
-    with open('scrap.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    with open('scrap.csv', 'w', newline='', encoding='utf-8', errors='ignore') as csvfile:
         csv_writer = writer(csvfile, quoting=QUOTE_MINIMAL, escapechar='\\', lineterminator='\n')
         # Write header
         csv_writer.writerow(['id', 'directory', 'file', 'content'])
