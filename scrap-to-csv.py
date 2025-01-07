@@ -53,6 +53,7 @@ def process_file(file_path, css_selector):
     return data
 
 def extract_data(html_content, css_selector, dir_name, file_name):
+    html_content = html_content.replace('<br>', '\n').replace('<br/>', '\n').replace('<br />', '\n')
     soup = BeautifulSoup(html_content, 'html.parser')
     elements = soup.select(css_selector)
     data = []
