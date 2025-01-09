@@ -147,6 +147,7 @@ $ sed -E -i '
 Checking if the file is well-formed:
 
 ```
+$ sudo apt install csvkit
 $ csvclean -n scrap.csv
 ```
 
