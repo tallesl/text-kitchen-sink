@@ -67,7 +67,7 @@ most frequent words:
 • in: 3
 ``` 
 
-## .html and .csv
+## crawled .html to scraped .csv
 
 Directory search and flattening:
 
@@ -93,42 +93,6 @@ $ head -n 1 scrap.csv
 uuid,directory,file,content
 ```
 
-Counting `.csv` rows:
-
-```
-$ chmod +x count-csv.py
-$ pip install pandas
-$ ./count-csv.py scrap.csv
-```
-
-Sampling `.csv` rows:
-
-```
-$ sudo apt install csvkit
-$ csvsql -z 999999999 --query "SELECT * FROM 'scrap' ORDER BY RANDOM() LIMIT 30" scrap.csv > scrap-samples.csv
-```
-
-Viewing only the "content" column from `.csv`:
-
-```
-$ sudo apt install csvkit
-$ cat scrap.csv | csvcut -c 4 --maxfieldsize 999999 | less
-```
-
-Removing leading and trailing quotes on each line, if present:
-
-```
-$ cat scrap.csv | sed 's/^"//;s/"$//' | less
-```
-
-Deduping `.csv` by "content" column:
-
-```
-$ chmod +x dedupe-by-content.py
-$ pip install pandas
-$ ./dedupe-by-content.py scrap.csv > deduped.csv
-```
-
 Scraping recipe:
 
 1. Inspect the filepaths looking for a common pattern (`find crawled.com/ | vim -`).
@@ -139,3 +103,55 @@ Scraping recipe:
 1. Inspect the .csv, check if it looks correct.
 1. If yes, now scrap again but this time on all the crawled pages. If not, back to figuring it out the CSS selector.
 1. [Dedupe it](#deduping-csv-by-content-column) just in case.
+
+## .csv cleanup
+
+Counting rows:
+
+```
+$ sudo apt install csvkit
+$ csvstat --count scrap.csv
+```
+
+Viewing "content" column only:
+
+```
+$ sudo apt install csvkit
+$ cat scrap.csv | csvcut -c 4 --maxfieldsize 999999 | less
+```
+
+Use sed to remove any line containing things such as "CRITEO TAG", "upload picture", ".jpg", etc:
+
+```
+$ sed -i '/FISHY STRING GOES HERE$/d' scrap.csv
+```
+
+Using sed to remove extension:
+
+```
+$ sed -E -i '
+/\.html/ {      # match ".html"
+    s/\.html//  # remove ".html"
+}' scrap.csv
+```
+
+Use sed to remove query string:
+
+```
+$ sed -E -i '
+/viewtopic\.php\?/ { # match "viewtopic.php?"
+    s/\?.*?,/,/      # remove from "?" up to the next ","
+}' scrap.csv
+```
+
+Checking if the file is well-formed:
+
+```
+$ csvclean -n scrap.csv
+```
+
+Deduping rows by "content" column:
+
+```
+$ ./dedupe-by-content.py scrap.csv > deduped.csv
+```
