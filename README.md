@@ -102,7 +102,6 @@ Scraping recipe:
 1. [Scrap the samples to .csv](#scraping-to-csv).
 1. Inspect the .csv, check if it looks correct.
 1. If yes, now scrap again but this time on all the crawled pages. If not, back to figuring it out the CSS selector.
-1. [Dedupe it](#deduping-csv-by-content-column) just in case.
 
 ## .csv cleanup
 
