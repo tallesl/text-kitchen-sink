@@ -88,7 +88,7 @@ Scraping to `.csv`:
 ```
 $ chmod +x scrap_to_csv.py
 $ pip install beautifulsoup4 tdqm
-$ ./scrap-to-csv.py 'crawled_forum/' '.postbody .content div'
+$ ./scrap-to-csv.py 'crawled_forum/' '.postbody div'
 $ head -n 1 scrap.csv
 uuid,directory,file,content
 ```
